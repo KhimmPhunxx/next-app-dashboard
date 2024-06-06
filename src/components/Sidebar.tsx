@@ -1,11 +1,13 @@
 'use client';
-import { ArrowLeft, Home, LayoutDashboard, ShoppingBag, User } from 'lucide-react';
+import { Home, LayoutDashboard, ShoppingBag, User } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react'
 import { usePathname } from 'next/navigation';
 import { LuChevronFirst } from "react-icons/lu";
 
 const Sidebar = () => {
+
+    const pathname = usePathname()
 
     const [expanded, setExpanded] = React.useState(true)
 
@@ -49,11 +51,14 @@ const Sidebar = () => {
             <div className='grow'>
                 <div className=' gap-5 space-y-2'>
                     {link.map((item, index) => (
-                        <Link href={item.path} key={index} className={` ${expanded ? 'flex' : ' justify-center items-center'} text-gray-800 font-semibold flex items-center gap-4 p-2 rounded duration-200 ${usePathname() === item.path ? 'bg-slate-100' : 'hover:bg-slate-100'}`}>
-                            {item.icon}
-                            <p className={`${expanded ? 'flex' : 'hidden'} `}>{item.name}</p>
+                        <Link key={index} href={item.path}>
+                            <a className={`flex items-center gap-2 p-2 rounded-lg ${pathname === item.path ? 'bg-slate-800 text-white' : 'text-gray-600 hover:bg-slate-800 hover:text-white'} `}>
+                                {item.icon}
+                                <p className={`${expanded ? 'block' : 'hidden'} `}>{item.name}</p>
+                            </a>
                         </Link>
                     ))}
+
                 </div>
             </div>
             <div className='flex justify-center items-center w-full'>
