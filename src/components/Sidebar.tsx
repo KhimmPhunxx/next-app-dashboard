@@ -51,7 +51,7 @@ const Sidebar = () => {
             <div className='grow'>
                 <div className=' gap-5 space-y-2'>
                     {link.map((item, index) => (
-                        <Link key={index} href={item.path} className={ ` ${expanded ? '' : ' justify-center items-center'} flex items-center gap-4 p-2 rounded duration-200 text-gray-800 font-semibold ${pathname === item.path ? 'bg-slate-100 ' : 'text-gray-600 hover:bg-slate-100 '} `}>
+                        <Link key={index} href={item.path} className={ ` ${expanded ? '' : ' justify-center items-center'} flex items-center gap-4 p-2 rounded duration-200 text-gray-800 font-medium ${pathname === item.path ? 'bg-slate-100 ' : 'text-gray-600 hover:bg-slate-100 '} `}>
                             {item.icon}
                             <p className={`${expanded ? 'block' : 'hidden'} `}>{item.name}</p>
                         </Link>
